@@ -208,7 +208,7 @@ p {
 
 #portfolio .container .middle-row .skill-box p {
   margin: 0;
-  color: rgb(0, 0, 0);
+  color: white;
   line-height: 1.6;
 }
 
@@ -471,6 +471,12 @@ p {
   color: white;
   line-height: 1;
   font-size: 16px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 #footer .container .row .text p {
