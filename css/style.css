@@ -131,7 +131,7 @@ p {
 }
 
 .cv-button {
-  background: #d29d07;
+  background: #df9615
   color: white;
   padding: 10px 20px;
   border-radius:80%;
@@ -157,7 +157,7 @@ p {
   margin: 0;
 }
 .cv-button:hover {
-  background: #08fdd8;
+  background: #13277c;
 }
 .dw-icon{
   height: 50px;
