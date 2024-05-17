@@ -130,6 +130,47 @@ p {
   color: #e90e10;
 }
 
+.cv-button {
+  background: #d29d07;
+  color: white;
+  padding: 10px 20px;
+  border-radius:80%;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+  text-align: center;
+  height: 80px;
+  margin-top: 50px;
+  width: 280px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  text-align: center;
+  margin-left: calc(50% - 140px);
+}
+
+.cv-button p{
+  margin: 0;
+}
+.cv-button:hover {
+  background: #08fdd8;
+}
+.dw-icon{
+  height: 50px;
+  width: 50px;
+}
+.dw-txt{
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight:bolder;
+}
+
 #about .container .row {
   padding-top: 90px;
 }
@@ -471,6 +512,12 @@ p {
   color: white;
   line-height: 1;
   font-size: 16px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 #footer .container .row .text p {
