@@ -170,6 +170,9 @@ p {
   font-family: 'Courier New', Courier, monospace;
   font-weight:bolder;
 }
+.cv-button:hover .dw-txt {
+  color: #ffffff;
+}
 
 #about .container .row {
   padding-top: 90px;
