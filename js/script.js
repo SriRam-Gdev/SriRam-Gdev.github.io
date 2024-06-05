@@ -52,7 +52,7 @@ $(document).ready(function () {
     let executed = false;
 
     function progressBar1() {
-        if (al1 >= 86) {
+        if (al1 >= 51) {
             clearTimeout(bar1);
             return;
         }
@@ -74,7 +74,7 @@ $(document).ready(function () {
     }
 
     function progressBar2() {
-        if (al2 >= 76) {
+        if (al2 >= 71) {
             clearTimeout(bar2);
             return;
         }
@@ -96,7 +96,7 @@ $(document).ready(function () {
     }
 
     function progressBar3() {
-        if (al3 >= 86) {
+        if (al3 >= 51) {
             clearTimeout(bar3);
             return;
         }
@@ -401,5 +401,4 @@ $(document).ready(function () {
             document.querySelector("#message").value=""
         });
 	}
- */
-});
+});*/});
