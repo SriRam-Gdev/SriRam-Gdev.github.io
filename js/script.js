@@ -366,7 +366,7 @@ $(document).ready(function () {
     });
 
     // success message
-
+/*
     $('.send-message').on('submit', function (e) {
         e.preventDefault();
     });
@@ -401,4 +401,5 @@ $(document).ready(function () {
             document.querySelector("#message").value=""
         });
 	}
+ */
 });
