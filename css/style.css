@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Minecraftia';
+  src: url('path/to/Minecraftia.woff2') format('woff2');
+}
+body, h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Minecraftia', monospace;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -307,6 +315,8 @@ p {
 
 #about .container .row .image {
   width: 450px;
+  background: #0a0e27;
+  border: none;
 }
 
 #about .container .row .image img {
@@ -373,12 +383,11 @@ p {
 
 #portfolio .container .middle-row .skill-box {
   padding: 25px;
-  background: linear-gradient(135deg, rgba(10, 17, 40, 0.9) 0%, rgba(26, 10, 46, 0.9) 100%);
-  box-shadow: 0 0 30px rgba(0, 255, 200, 0.2), inset 0 0 20px rgba(255, 0, 128, 0.1);
+  background: #0a0e27;
+  box-shadow: none;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 2px solid #00ffcc;
+  border: none;
   border-radius: 10px;
-  backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
 }
@@ -408,10 +417,10 @@ p {
 }
 
 #portfolio .container .middle-row .skill-box:hover {
-  background: linear-gradient(135deg, rgba(255, 0, 128, 0.2) 0%, rgba(0, 255, 200, 0.15) 100%);
+  background: #0a0e27;
   transform: translateY(-10px);
-  box-shadow: 0 0 50px rgba(255, 0, 128, 0.4), 0 0 30px rgba(0, 255, 200, 0.3), inset 0 0 30px rgba(0, 255, 200, 0.1);
-  border-color: #ff0080;
+  box-shadow: 0 0 30px #00ffcc;
+  border: 2px solid #00ffcc;
 }
 
 #portfolio .container .middle-row .skill-box:hover::after {
@@ -520,8 +529,8 @@ p {
 
 #projects .container .upper-row .info-content {
   padding-left: 30px;
-  border-left: 4px solid #ff0080;
-  box-shadow: inset -10px 0 20px rgba(255, 0, 128, 0.1);
+  border-left: none;
+  box-shadow: none;
 }
 
 #projects .container .upper-row .info-content p {
@@ -640,13 +649,13 @@ p {
 
 #projects .container .lower-row .owl-carousel .item .outer-cardholder {
   margin: 10px;
-  background: linear-gradient(135deg, rgba(10, 17, 40, 0.95) 0%, rgba(26, 10, 46, 0.95) 100%);
+  background: #0a0e27;
   position: relative;
-  box-shadow: 0 0 30px rgba(0, 255, 200, 0.2), inset 0 0 20px rgba(255, 0, 128, 0.05);
+  box-shadow: none;
   height: 420px;
   border-radius: 10px;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 2px solid #00ffcc;
+  border: none;
   overflow: hidden;
 }
 
@@ -797,7 +806,7 @@ p {
 #contact .container form .row input {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  background: linear-gradient(135deg, rgba(10, 17, 40, 0.8) 0%, rgba(26, 10, 46, 0.8) 100%);
+  background: #0a0e27;
   border: 2px solid #00ffcc;
   color: #00ffcc;
   box-shadow: 0 0 15px rgba(0, 255, 200, 0.2), inset 0 0 10px rgba(0, 255, 200, 0.1);
@@ -818,7 +827,7 @@ p {
 #contact .container form .row textarea {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  background: linear-gradient(135deg, rgba(10, 17, 40, 0.8) 0%, rgba(26, 10, 46, 0.8) 100%);
+  background: #0a0e27;
   border: 2px solid #00ffcc;
   color: #00ffcc;
   box-shadow: 0 0 15px rgba(0, 255, 200, 0.2), inset 0 0 10px rgba(0, 255, 200, 0.1);
@@ -837,7 +846,7 @@ p {
 }
 
 #footer {
-  background: #101820ff;
+  background: #0a0e27;
 }
 
 #footer .container .row {
