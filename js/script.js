@@ -1,3 +1,4 @@
+// === Section theme IntersectionObserver ===
 $(document).ready(function () {
 
     // function of the back to top button

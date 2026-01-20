@@ -1,3 +1,9 @@
+img, .character-img, .character-container {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+/* Original CSS restored. All session changes removed except for My Games section styles. */
 @font-face {
   font-family: 'Minecraftia';
   src: url('path/to/Minecraftia.woff2') format('woff2');
@@ -250,8 +256,8 @@ p {
   align-items: center;
   text-align: center;
   margin-left: calc(50% - 140px);
-  box-shadow: 0 0 30px rgba(0, 255, 200, 0.5), inset 0 0 20px rgba(255, 0, 128, 0.2);
-  border: 2px solid #00ffcc;
+  box-shadow: none;
+  border: none;
   position: relative;
   overflow: hidden;
   text-transform: uppercase;
@@ -506,6 +512,115 @@ p {
   padding-bottom: 75px;
 }
 
+#certifications {
+  padding: 120px 0;
+}
+
+#certifications .cert-card {
+  background: #0a0e27;
+  border: 2px solid rgba(0, 255, 200, 0.4);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 0 35px rgba(0, 255, 200, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  height: 100%;
+}
+
+#certifications .cert-media {
+  margin-bottom: 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.25);
+  background: #0a0e27;
+}
+
+#certifications .cert-media img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+#certifications .cert-media object,
+#certifications .cert-media embed,
+#certifications .cert-media iframe {
+  width: 100%;
+  display: block;
+  border: 0;
+  aspect-ratio: 16 / 9;
+}
+
+#certifications .cert-card h4 {
+  color: #00ffcc;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-shadow: 0 0 12px rgba(0, 255, 200, 0.6);
+}
+
+#certifications .issuer {
+  color: #ffaa00;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+#certifications .cert-desc {
+  color: #ffffff;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+#certifications .cert-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#certifications .cert-highlights li {
+  color: #00ffcc;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 22px;
+}
+
+#certifications .cert-highlights li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: #ff0080;
+  text-shadow: 0 0 8px rgba(255, 0, 128, 0.6);
+}
+
+#certifications .cert-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 45px rgba(0, 255, 200, 0.35);
+  border-color: #ff0080;
+}
+
+#certifications .cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff0080 0%, #00ffcc 100%);
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 18px rgba(0, 255, 200, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#certifications .cert-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 28px rgba(255, 0, 128, 0.6);
+  text-decoration: none;
+}
+
 #projects .container .upper-row {
   padding-top: 150px;
 }
@@ -726,6 +841,16 @@ p {
   max-width: 100%;
   height: 100%;
   border-radius: 5%;
+}
+
+#projects .container .lower-row .owl-carousel .item .outer-cardholder a .cardholder .image video {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  border-radius: 5%;
+  object-fit: cover;
 }
 
 #projects .container .lower-row .owl-carousel .item .outer-cardholder a .cardholder .text {
