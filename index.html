@@ -30,7 +30,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.1/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/three-scene.js"></script>
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/bd3d602acc.js"></script>
@@ -106,6 +108,31 @@
     </div>
   </section>
 
+  <!-- 3D Interactive Section -->
+
+  <section id="interactive-3d" style="background: linear-gradient(135deg, rgba(10, 17, 40, 0.9) 0%, rgba(26, 10, 46, 0.9) 100%); padding: 100px 0; border-top: 3px solid #ff0080; border-bottom: 3px solid #00ffcc; min-height: 600px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div style="text-align: center; margin-bottom: 50px;">
+            <h5 style="color: #ffaa00; font-size: 16px; text-shadow: 0 0 10px rgba(255, 170, 0, 0.6); text-transform: uppercase; letter-spacing: 3px; font-weight: bold;">INTERACTIVE</h5>
+            <h2 style="color: #00ffcc; text-shadow: 0 0 20px rgba(0, 255, 200, 0.6); font-size: 48px; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px;">HOVER & INTERACT</h2>
+            <p style="color: #00ffcc; text-shadow: 0 0 10px rgba(0, 255, 200, 0.3); font-size: 16px;">Move your mouse over the 3D character - it reacts to your movements!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="three-js-container" style="width: 100%; height: 500px; border: 3px solid #00ffcc; border-radius: 15px; box-shadow: 0 0 40px rgba(0, 255, 200, 0.3), inset 0 0 30px rgba(255, 0, 128, 0.1); background: linear-gradient(135deg, rgba(10, 17, 40, 0.95) 0%, rgba(26, 10, 46, 0.95) 100%); position: relative; overflow: hidden;">
+            <div id="three-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #00ffcc; text-align: center; text-shadow: 0 0 10px rgba(0, 255, 200, 0.5);">
+              <p style="font-size: 18px;">Loading 3D Character...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- about me -->
 
   <section id="about">
@@ -125,7 +152,7 @@
               cricket , outdoor activities, Gaming and TV series. Always ready to welcome new technologies and challenges.</p>
             <p>Interested in the Entire Game Development Industry and working on ambitious projects.</p>
           </div>
-          <a class="btn btn-info cv-button" href="cv.pdf" download>
+          <a class="btn btn-info cv-button" href="SriramResume.pdf" download>
             <svg class="dw-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" ><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>
             <p class="dw-txt">Download CV</p> 
           
@@ -137,7 +164,7 @@
 
   <!-- portfolio -->
 
-  <section id="portfolio">
+  <section id="portfolio" style="background: linear-gradient(135deg, rgba(10, 17, 40, 0.7) 0%, rgba(26, 10, 46, 0.7) 100%); border-top: 3px solid #00ffcc; border-bottom: 3px solid #ff0080;">
     <div class="container">
       <div class="row upper-row">
         <div class="col-lg-6 align-self-center">
@@ -214,7 +241,7 @@
 
   <!-- projects -->
 
-  <section id="projects">
+  <section id="projects" style="background: linear-gradient(135deg, rgba(10, 17, 40, 0.6) 0%, rgba(26, 10, 46, 0.6) 100%); border-top: 3px solid #ff0080; border-bottom: 3px solid #00ffcc;">
     <div class="container">
       <div class="row upper-row">
         <div class="col-lg-5 align-self-center">
@@ -344,9 +371,107 @@
     </div>
   </section>
 
+  <!-- my games -->
+
+  <section id="games" style="background-color: #1a1a1a; padding: 80px 0;">
+    <div class="container">
+      <div class="row upper-row">
+        <div class="col-lg-12 align-self-center text-center">
+          <div class="header sal">
+            <h2 style="color: #fff;">MY GAMES</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row middle-row mt-5">
+        <div class="col-lg-10 mx-auto">
+          <div class="game-card" style="background-color: #2a2a2a; padding: 30px; border-radius: 15px;">
+            <div class="game-image" style="text-align: center;">
+              <div class="video-container" style="position: relative; display: inline-block; width: 100%; max-width: 800px;">
+                <video 
+                  id="boomBashVideo"
+                  width="100%" 
+                  style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                  onmouseenter="this.play()"
+                  onmouseleave="this.pause()"
+                >
+                  <source src="img/Boom Bash Gameplay.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay" style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(0,0,0,0.4);
+                  border-radius: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  transition: background 0.3s ease;
+                  pointer-events: none;
+                " id="videoOverlay">
+                  <div style="
+                    width: 70px;
+                    height: 70px;
+                    background: rgba(255,255,255,0.9);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                  " id="playButton">
+                    <i class="fas fa-play" style="font-size: 28px; color: #28a745; margin-left: 4px;"></i>
+                  </div>
+                </div>
+              </div>
+              <script>
+                const video = document.getElementById('boomBashVideo');
+                const overlay = document.getElementById('videoOverlay');
+                const playButton = document.getElementById('playButton');
+                const videoContainer = document.querySelector('.video-container');
+
+                video.addEventListener('play', () => {
+                  overlay.style.background = 'rgba(0,0,0,0)';
+                  playButton.style.opacity = '0';
+                  playButton.style.transform = 'scale(0.8)';
+                });
+
+                video.addEventListener('pause', () => {
+                  overlay.style.background = 'rgba(0,0,0,0.4)';
+                  playButton.style.opacity = '1';
+                  playButton.style.transform = 'scale(1)';
+                });
+
+                videoContainer.addEventListener('mouseenter', () => {
+                  video.style.transform = 'scale(1.02)';
+                  video.style.boxShadow = '0 15px 40px rgba(40,167,69,0.3)';
+                });
+
+                videoContainer.addEventListener('mouseleave', () => {
+                  video.style.transform = 'scale(1)';
+                  video.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+                });
+              </script>
+              <div class="game-info mt-4">
+                <h3 style="color: #fff;">Boom Bash</h3>
+                <p class="game-description" style="color: #ccc;">An exciting game with fruit ninja mechanics that challenges your reflexes and precision. Slash through objects and rack up high scores!</p>
+                <p class="tags" style="color: #ffc107;">#Unity #WebGL #FruitNinja #ActionGame</p>
+                <a href="https://play.unity.com/en/games/ffb07507-6223-436c-a8e6-9b46d73602b1/boom-bash" target="_blank" class="btn btn-success btn-lg mt-3">
+                  <i class="fas fa-gamepad"></i> Play Game
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- contact -->
 
-  <section id="contact">
+  <section id="contact" style="background: linear-gradient(135deg, rgba(10, 17, 40, 0.7) 0%, rgba(26, 10, 46, 0.7) 100%); border-top: 3px solid #00ffcc; border-bottom: 3px solid #ff0080;">
     <div class="container">
       <div class="row"> 
         <div class="col-lg-12">
@@ -395,7 +520,7 @@
 
   <!-- footer -->
 
-  <section id="footer">
+  <section id="footer" style="background: linear-gradient(135deg, #0a0e27 0%, #1a0a2e 100%); border-top: 3px solid #ff0080;">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-12">
