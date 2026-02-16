@@ -592,7 +592,7 @@
 
       const scene = new THREE.Scene();
       const width = window.innerWidth;
-      const height = container.parentElement.clientHeight || 600;
+      const height = window.innerHeight;
       const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       
@@ -601,32 +601,146 @@
       renderer.setPixelRatio(window.devicePixelRatio);
       container.appendChild(renderer.domElement);
 
-      // Create multiple cubes for dynamic effect
-      const cubes = [];
-      const colors = [0x00ffcc, 0xff6b00, 0xff0080];
+      // Game Dev themed geometry collection
+      const geometries = [];
       
-      for (let i = 0; i < 3; i++) {
-        const geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
-        const material = new THREE.MeshPhongMaterial({ 
-          color: colors[i], 
-          emissive: colors[i],
-          emissiveIntensity: 0.3
+      // Create diverse game dev themed objects
+      const createGameDevObjects = () => {
+        const objects = [];
+        const colors = [0x00ffcc, 0xff6b00, 0xff0080, 0x00ff00, 0xff00ff];
+        
+        // Cubes (blocks) - smaller and more subtle
+        for (let i = 0; i < 2; i++) {
+          const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+          const material = new THREE.MeshPhongMaterial({ 
+            color: colors[i % colors.length], 
+            emissive: colors[i % colors.length],
+            emissiveIntensity: 0.15,
+            wireframe: false,
+            shininess: 100
+          });
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.position.set((i - 0.5) * 6, Math.random() * 5 - 2.5, -12 - i * 3);
+          mesh.userData.velocity = {
+            x: (Math.random() - 0.5) * 0.008,
+            y: (Math.random() - 0.5) * 0.008,
+            z: (Math.random() - 0.5) * 0.004
+          };
+          scene.add(mesh);
+          objects.push(mesh);
+        }
+        
+        // Tetrahedrons (pyramid shapes) - smaller
+        for (let i = 0; i < 2; i++) {
+          const geometry = new THREE.TetrahedronGeometry(0.6, 0);
+          const material = new THREE.MeshPhongMaterial({ 
+            color: colors[(i + 2) % colors.length], 
+            emissive: colors[(i + 2) % colors.length],
+            emissiveIntensity: 0.12,
+            shininess: 80
+          });
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.position.set((i - 0.5) * -6, Math.random() * 4 - 2, -10 - i * 4);
+          mesh.userData.velocity = {
+            x: (Math.random() - 0.5) * 0.006,
+            y: (Math.random() - 0.5) * 0.006,
+            z: (Math.random() - 0.5) * 0.003
+          };
+          scene.add(mesh);
+          objects.push(mesh);
+        }
+        
+        // Octahedrons (diamond shapes) - smaller
+        for (let i = 0; i < 2; i++) {
+          const geometry = new THREE.OctahedronGeometry(0.55, 0);
+          const material = new THREE.MeshPhongMaterial({ 
+            color: colors[(i + 3) % colors.length], 
+            emissive: colors[(i + 3) % colors.length],
+            emissiveIntensity: 0.13,
+            shininess: 90
+          });
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.position.set((i - 0.5) * 5, Math.random() * 6 - 3, -11 - i * 3.5);
+          mesh.userData.velocity = {
+            x: (Math.random() - 0.5) * 0.007,
+            y: (Math.random() - 0.5) * 0.007,
+            z: (Math.random() - 0.5) * 0.004
+          };
+          scene.add(mesh);
+          objects.push(mesh);
+        }
+        
+        // Icosahedrons (complex polyhedrons) - smaller
+        for (let i = 0; i < 1; i++) {
+          const geometry = new THREE.IcosahedronGeometry(0.6, 0);
+          const material = new THREE.MeshPhongMaterial({ 
+            color: colors[(i + 4) % colors.length], 
+            emissive: colors[(i + 4) % colors.length],
+            emissiveIntensity: 0.15,
+            shininess: 100
+          });
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.position.set(0, 0, -8);
+          mesh.userData.velocity = {
+            x: (Math.random() - 0.5) * 0.005,
+            y: (Math.random() - 0.5) * 0.005,
+            z: (Math.random() - 0.5) * 0.003
+          };
+          scene.add(mesh);
+          objects.push(mesh);
+        }
+        
+        return objects;
+      };
+
+      // Create particle system for game dev vibe - more subtle
+      const createParticles = () => {
+        const particleCount = 100;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        
+        for (let i = 0; i < particleCount * 3; i += 3) {
+          positions[i] = (Math.random() - 0.5) * 40;
+          positions[i + 1] = (Math.random() - 0.5) * 30;
+          positions[i + 2] = (Math.random() - 0.5) * 20;
+        }
+        
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        
+        const material = new THREE.PointsMaterial({
+          color: 0x00ffcc,
+          size: 0.08,
+          sizeAttenuation: true,
+          transparent: true,
+          opacity: 0.3
         });
-        const cube = new THREE.Mesh(geometry, material);
-        cube.position.set((i - 1) * 3, Math.sin(i) * 2, -5 - i * 2);
-        scene.add(cube);
-        cubes.push(cube);
-      }
+        
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+        return particles;
+      };
 
-      // Lighting
-      const light = new THREE.DirectionalLight(0xffffff, 1.5);
-      light.position.set(5, 5, 5);
-      scene.add(light);
+      const gameObjects = createGameDevObjects();
+      const particles = createParticles();
 
-      const ambientLight = new THREE.AmbientLight(0x404040, 2);
+      // Enhanced Lighting for game dev aesthetic - more subtle
+      const light1 = new THREE.DirectionalLight(0x00ffcc, 0.6);
+      light1.position.set(10, 10, 10);
+      scene.add(light1);
+
+      const light2 = new THREE.DirectionalLight(0xff6b00, 0.4);
+      light2.position.set(-10, -10, 5);
+      scene.add(light2);
+
+      const ambientLight = new THREE.AmbientLight(0x404040, 0.8);
       scene.add(ambientLight);
 
-      camera.position.z = 5;
+      // Point light for glow effect - subtle
+      const pointLight = new THREE.PointLight(0xff0080, 0.5, 50);
+      pointLight.position.set(0, 0, 0);
+      scene.add(pointLight);
+
+      camera.position.z = 8;
 
       let mouse = { x: 0, y: 0 };
       document.addEventListener('mousemove', (e) => {
@@ -637,12 +751,39 @@
       function animate() {
         requestAnimationFrame(animate);
         
-        cubes.forEach((cube, i) => {
-          cube.rotation.x += 0.003 + i * 0.001;
-          cube.rotation.y += 0.005 + i * 0.002;
-          cube.rotation.z += mouse.x * 0.0005;
-          cube.position.x += Math.sin(i) * 0.01;
+        // Animate game objects with complex rotations - slower and more subtle
+        gameObjects.forEach((obj, i) => {
+          obj.rotation.x += 0.0008 + i * 0.0002;
+          obj.rotation.y += 0.0012 + i * 0.0002;
+          obj.rotation.z += mouse.x * 0.0002;
+          
+          // Add velocity-based movement
+          obj.position.x += obj.userData.velocity.x;
+          obj.position.y += obj.userData.velocity.y;
+          obj.position.z += obj.userData.velocity.z;
+          
+          // Boundary wrapping
+          if (obj.position.x > 20) obj.position.x = -20;
+          if (obj.position.x < -20) obj.position.x = 20;
+          if (obj.position.y > 15) obj.position.y = -15;
+          if (obj.position.y < -15) obj.position.y = 15;
+          if (obj.position.z > 2) obj.position.z = -15;
+          if (obj.position.z < -15) obj.position.z = 2;
+          
+          // Scale pulse effect - less intense
+          const pulse = Math.sin(Date.now() * 0.0003 + i) * 0.05 + 1;
+          obj.scale.set(pulse, pulse, pulse);
         });
+        
+        // Animate particles
+        if (particles) {
+          particles.rotation.x += 0.00005;
+          particles.rotation.y += 0.0001;
+        }
+        
+        // Move point light based on mouse
+        pointLight.position.x = mouse.x * 5;
+        pointLight.position.y = mouse.y * 5;
         
         renderer.render(scene, camera);
       }
@@ -652,7 +793,7 @@
       // Handle window resize
       window.addEventListener('resize', () => {
         const newWidth = window.innerWidth;
-        const newHeight = container.parentElement.clientHeight;
+        const newHeight = window.innerHeight;
         camera.aspect = newWidth / newHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(newWidth, newHeight);
