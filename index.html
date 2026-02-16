@@ -112,9 +112,8 @@
 
   <!-- intro -->
 
-  <section id="home" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%; z-index: 0;"></div>
-    <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
+  <section id="home" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); position: relative; overflow: hidden; min-height: 600px;">
+    <div id="3d-canvas-home" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
     <div class="container-fluid" style="position: relative; z-index: 1;">
       <div class="row">
         <div class="intro-container">
@@ -151,7 +150,7 @@
   <!-- about me -->
 
   <section id="about" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 600px;">
-    <div id="3d-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+    <div id="3d-canvas-about" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
     
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row align-items-center" style="min-height: 500px;">
@@ -171,97 +170,12 @@
         </div>
       </div>
     </div>
-
-    <script>
-      // Three.js 3D Rotating Cube for About Section
-      function initAbout3D() {
-        const container = document.getElementById('3d-canvas');
-        if (!container) return;
-
-        const scene = new THREE.Scene();
-        const width = window.innerWidth;
-        const height = container.clientHeight || 600;
-        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        
-        renderer.setSize(width, height);
-        renderer.setClearColor(0x000000, 0);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        container.appendChild(renderer.domElement);
-
-        // Create multiple cubes for dynamic effect
-        const cubes = [];
-        const colors = [0x00ffcc, 0xff6b00, 0xff0080];
-        
-        for (let i = 0; i < 3; i++) {
-          const geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
-          const material = new THREE.MeshPhongMaterial({ 
-            color: colors[i], 
-            emissive: colors[i],
-            emissiveIntensity: 0.3,
-            wireframe: false
-          });
-          const cube = new THREE.Mesh(geometry, material);
-          cube.position.set((i - 1) * 3, Math.sin(i) * 2, -5 - i * 2);
-          scene.add(cube);
-          cubes.push(cube);
-        }
-
-        // Lighting
-        const light = new THREE.DirectionalLight(0xffffff, 1.5);
-        light.position.set(5, 5, 5);
-        scene.add(light);
-
-        const ambientLight = new THREE.AmbientLight(0x404040, 2);
-        scene.add(ambientLight);
-
-        camera.position.z = 5;
-
-        let mouse = { x: 0, y: 0 };
-        document.addEventListener('mousemove', (e) => {
-          mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-          mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-        });
-
-        function animate() {
-          requestAnimationFrame(animate);
-          
-          cubes.forEach((cube, i) => {
-            cube.rotation.x += 0.003 + i * 0.001;
-            cube.rotation.y += 0.005 + i * 0.002;
-            cube.rotation.z += mouse.x * 0.0005;
-            cube.position.x += Math.sin(i) * 0.01;
-          });
-          
-          renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-          const newWidth = window.innerWidth;
-          const newHeight = container.clientHeight;
-          camera.aspect = newWidth / newHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(newWidth, newHeight);
-        });
-      }
-
-      // Initialize when DOM is ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAbout3D);
-      } else {
-        initAbout3D();
-      }
-    </script>
   </section>
 
   <!-- portfolio -->
 
-  <section id="portfolio" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%; z-index: 0;"></div>
-    <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
+  <section id="portfolio" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 700px;">
+    <div id="3d-canvas-portfolio" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row upper-row">
         <div class="col-lg-6 align-self-center">
@@ -333,9 +247,8 @@
   </section>
 
   <!-- Game Dev Stats -->
-  <section style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%; z-index: 0;"></div>
-    <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
+  <section style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 500px;">
+    <div id="3d-canvas-stats" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <div style="text-align: center; margin-bottom: 60px;">
         <h2 style="color: #fff; font-size: 2.8rem; font-weight: bold; margin-bottom: 10px;">⚡ GAME DEV STATS ⚡</h2>
@@ -380,9 +293,8 @@
 
   <!-- projects -->
 
-  <section id="projects" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%; z-index: 0;"></div>
-    <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
+  <section id="projects" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 900px;">
+    <div id="3d-canvas-projects" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row mb-5">
         <div class="col-lg-12 text-center">
@@ -449,9 +361,8 @@
 
   <!-- certifications -->
 
-  <section id="certifications" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%; z-index: 0;"></div>
-    <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
+  <section id="certifications" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 600px;">
+    <div id="3d-canvas-certifications" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row upper-row">
         <div class="col-lg-12 text-center">
@@ -507,9 +418,8 @@
 
   <!-- my games -->
 
-  <section id="games" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%; z-index: 0;"></div>
-    <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
+  <section id="games" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 500px;">
+    <div id="3d-canvas-games" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row mb-5">
         <div class="col-lg-12 text-center">
@@ -539,9 +449,8 @@
 
   <!-- contact -->
 
-  <section id="contact" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%; z-index: 0;"></div>
-    <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
+  <section id="contact" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 700px;">
+    <div id="3d-canvas-contact" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row mb-5">
         <div class="col-lg-12 text-center">
@@ -680,7 +589,101 @@
     </div>
   </div>
 
+  <!-- Global 3D Background Animation Script -->
+  <script>
+    function init3DCanvas(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
 
+      const scene = new THREE.Scene();
+      const width = window.innerWidth;
+      const height = container.parentElement.clientHeight || 600;
+      const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      
+      renderer.setSize(width, height);
+      renderer.setClearColor(0x000000, 0);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
+
+      // Create multiple cubes for dynamic effect
+      const cubes = [];
+      const colors = [0x00ffcc, 0xff6b00, 0xff0080];
+      
+      for (let i = 0; i < 3; i++) {
+        const geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+        const material = new THREE.MeshPhongMaterial({ 
+          color: colors[i], 
+          emissive: colors[i],
+          emissiveIntensity: 0.3
+        });
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set((i - 1) * 3, Math.sin(i) * 2, -5 - i * 2);
+        scene.add(cube);
+        cubes.push(cube);
+      }
+
+      // Lighting
+      const light = new THREE.DirectionalLight(0xffffff, 1.5);
+      light.position.set(5, 5, 5);
+      scene.add(light);
+
+      const ambientLight = new THREE.AmbientLight(0x404040, 2);
+      scene.add(ambientLight);
+
+      camera.position.z = 5;
+
+      let mouse = { x: 0, y: 0 };
+      document.addEventListener('mousemove', (e) => {
+        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        cubes.forEach((cube, i) => {
+          cube.rotation.x += 0.003 + i * 0.001;
+          cube.rotation.y += 0.005 + i * 0.002;
+          cube.rotation.z += mouse.x * 0.0005;
+          cube.position.x += Math.sin(i) * 0.01;
+        });
+        
+        renderer.render(scene, camera);
+      }
+
+      animate();
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        const newWidth = window.innerWidth;
+        const newHeight = container.parentElement.clientHeight;
+        camera.aspect = newWidth / newHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(newWidth, newHeight);
+      });
+    }
+
+    // Initialize all 3D canvases
+    const canvasIds = [
+      '3d-canvas-home',
+      '3d-canvas-about',
+      '3d-canvas-portfolio',
+      '3d-canvas-stats',
+      '3d-canvas-projects',
+      '3d-canvas-certifications',
+      '3d-canvas-games',
+      '3d-canvas-contact'
+    ];
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        canvasIds.forEach(id => init3DCanvas(id));
+      });
+    } else {
+      canvasIds.forEach(id => init3DCanvas(id));
+    }
+  </script>
 
 </body>
 </html>
