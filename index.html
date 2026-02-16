@@ -154,8 +154,11 @@
     <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%; z-index: 0;"></div>
     <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
     <div class="container" style="position: relative; z-index: 1;">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
+      <div class="row align-items-center">
+        <div class="col-lg-6" style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+          <div id="3d-canvas" style="width: 100%; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 0 40px rgba(0,255,204,0.3); border: 1px solid rgba(0,255,204,0.2);"></div>
+        </div>
+        <div class="col-lg-6">
           <div class="text">
             <h1>ABOUT ME...</h1>
             <p><strong>Game Developer | Unity & Blender Enthusiast | Team Player</strong></p>
@@ -171,6 +174,77 @@
         </div>
       </div>
     </div>
+
+    <script>
+      // Three.js 3D Rotating Cube for About Section
+      function initAbout3D() {
+        const container = document.getElementById('3d-canvas');
+        if (!container) return;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setClearColor(0x000000, 0);
+        container.appendChild(renderer.domElement);
+
+        // Create cube with game dev colors
+        const geometry = new THREE.BoxGeometry(2, 2, 2);
+        const materials = [
+          new THREE.MeshPhongMaterial({ color: 0x00ffcc, emissive: 0x00aa99 }), // Cyan
+          new THREE.MeshPhongMaterial({ color: 0xff6b00, emissive: 0xcc5500 }), // Orange
+          new THREE.MeshPhongMaterial({ color: 0x00ffcc, emissive: 0x00aa99 }), // Cyan
+          new THREE.MeshPhongMaterial({ color: 0xff6b00, emissive: 0xcc5500 }), // Orange
+          new THREE.MeshPhongMaterial({ color: 0xff0080, emissive: 0xcc0066 }), // Pink
+          new THREE.MeshPhongMaterial({ color: 0x00ffcc, emissive: 0x00aa99 }), // Cyan
+        ];
+        const cube = new THREE.Mesh(geometry, materials);
+        scene.add(cube);
+
+        // Lighting
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+
+        const ambientLight = new THREE.AmbientLight(0x404040, 2);
+        scene.add(ambientLight);
+
+        camera.position.z = 3;
+
+        let mouse = { x: 0, y: 0 };
+        document.addEventListener('mousemove', (e) => {
+          mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+          mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animate() {
+          requestAnimationFrame(animate);
+          
+          cube.rotation.x += 0.005;
+          cube.rotation.y += 0.007;
+          cube.rotation.z += mouse.x * 0.001;
+          
+          renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+          camera.aspect = container.clientWidth / container.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+      }
+
+      // Initialize when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAbout3D);
+      } else {
+        initAbout3D();
+      }
+    </script>
   </section>
 
   <!-- portfolio -->
