@@ -77,10 +77,12 @@
 
 <body>
 
-  
-  <!-- navbar -->
+  <!-- Global 3D Background Canvas -->
+  <div id="global-3d-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></div>
 
-  <section id="navbar">
+  
+
+  <section id="navbar" style="position: relative; z-index: 100;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">Sriram S</a>
@@ -112,8 +114,7 @@
 
   <!-- intro -->
 
-  <section id="home" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); position: relative; overflow: hidden; min-height: 600px;">
-    <div id="3d-canvas-home" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+  <section id="home" style="background: rgba(15, 15, 30, 0); padding: 0; position: relative; overflow: hidden; min-height: 600px; z-index: 2;">
     <div class="container-fluid" style="position: relative; z-index: 1;">
       <div class="row">
         <div class="intro-container">
@@ -149,8 +150,8 @@
 
   <!-- about me -->
 
-  <section id="about" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 600px;">
-    <div id="3d-canvas-about" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+  <section id="about" style="background: rgba(15, 15, 30, 0); padding: 80px 0; position: relative; overflow: hidden; min-height: 600px; z-index: 2;">
+    <div class="container" style="position: relative; z-index: 1;">
     
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row align-items-center" style="min-height: 500px;">
@@ -174,8 +175,7 @@
 
   <!-- portfolio -->
 
-  <section id="portfolio" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 700px;">
-    <div id="3d-canvas-portfolio" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+  <section id="portfolio" style="background: rgba(15, 15, 30, 0); padding: 80px 0; position: relative; overflow: hidden; min-height: 700px; z-index: 2;">
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row upper-row">
         <div class="col-lg-6 align-self-center">
@@ -247,8 +247,7 @@
   </section>
 
   <!-- Game Dev Stats -->
-  <section style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 500px;">
-    <div id="3d-canvas-stats" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+  <section style="background: rgba(15, 15, 30, 0); padding: 80px 0; position: relative; overflow: hidden; min-height: 500px; z-index: 2;">
     <div class="container" style="position: relative; z-index: 1;">
       <div style="text-align: center; margin-bottom: 60px;">
         <h2 style="color: #fff; font-size: 2.8rem; font-weight: bold; margin-bottom: 10px;">⚡ GAME DEV STATS ⚡</h2>
@@ -293,8 +292,7 @@
 
   <!-- projects -->
 
-  <section id="projects" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 900px;">
-    <div id="3d-canvas-projects" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+  <section id="projects" style="background: rgba(15, 15, 30, 0); padding: 80px 0; position: relative; overflow: hidden; min-height: 900px; z-index: 2;">
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row mb-5">
         <div class="col-lg-12 text-center">
@@ -361,8 +359,7 @@
 
   <!-- certifications -->
 
-  <section id="certifications" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 600px;">
-    <div id="3d-canvas-certifications" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+  <section id="certifications" style="background: rgba(15, 15, 30, 0); padding: 80px 0; position: relative; overflow: hidden; min-height: 600px; z-index: 2;">
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row upper-row">
         <div class="col-lg-12 text-center">
@@ -418,8 +415,7 @@
 
   <!-- my games -->
 
-  <section id="games" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 500px;">
-    <div id="3d-canvas-games" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+  <section id="games" style="background: rgba(15, 15, 30, 0); padding: 80px 0; position: relative; overflow: hidden; min-height: 500px; z-index: 2;">
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row mb-5">
         <div class="col-lg-12 text-center">
@@ -449,8 +445,7 @@
 
   <!-- contact -->
 
-  <section id="contact" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 700px;">
-    <div id="3d-canvas-contact" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+  <section id="contact" style="background: rgba(15, 15, 30, 0); padding: 80px 0; position: relative; overflow: hidden; min-height: 700px; z-index: 2;">
     <div class="container" style="position: relative; z-index: 1;">
       <div class="row mb-5">
         <div class="col-lg-12 text-center">
@@ -664,24 +659,13 @@
       });
     }
 
-    // Initialize all 3D canvases
-    const canvasIds = [
-      '3d-canvas-home',
-      '3d-canvas-about',
-      '3d-canvas-portfolio',
-      '3d-canvas-stats',
-      '3d-canvas-projects',
-      '3d-canvas-certifications',
-      '3d-canvas-games',
-      '3d-canvas-contact'
-    ];
-
+    // Initialize global 3D background canvas
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
-        canvasIds.forEach(id => init3DCanvas(id));
+        init3DCanvas('global-3d-canvas');
       });
     } else {
-      canvasIds.forEach(id => init3DCanvas(id));
+      init3DCanvas('global-3d-canvas');
     }
   </script>
 
