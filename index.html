@@ -150,16 +150,13 @@
 
   <!-- about me -->
 
-  <section id="about" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%; z-index: 0;"></div>
-    <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
+  <section id="about" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden; min-height: 600px;">
+    <div id="3d-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+    
     <div class="container" style="position: relative; z-index: 1;">
-      <div class="row align-items-center">
-        <div class="col-lg-6" style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
-          <div id="3d-canvas" style="width: 100%; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 0 40px rgba(0,255,204,0.3); border: 1px solid rgba(0,255,204,0.2);"></div>
-        </div>
-        <div class="col-lg-6">
-          <div class="text">
+      <div class="row align-items-center" style="min-height: 500px;">
+        <div class="col-lg-8 mx-auto">
+          <div class="text" style="background: rgba(15, 15, 30, 0.85); padding: 40px; border-radius: 15px; border: 1px solid rgba(0, 255, 204, 0.2); backdrop-filter: blur(10px);">
             <h1>ABOUT ME...</h1>
             <p><strong>Game Developer | Unity & Blender Enthusiast | Team Player</strong></p>
             <p>Passionate about building immersive games and interactive experiences. Skilled in <span style="color:#ffaa00;font-weight:bold">Unity</span>, <span style="color:#00ffcc;font-weight:bold">Blender</span>, <span style="color:#ff0080;font-weight:bold">C#</span>, and <span style="color:#00ffcc;font-weight:bold">Python</span>. Experienced in gameplay programming, 3D modeling, and rapid prototyping.</p>
@@ -182,35 +179,43 @@
         if (!container) return;
 
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const width = window.innerWidth;
+        const height = container.clientHeight || 600;
+        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         
-        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setSize(width, height);
         renderer.setClearColor(0x000000, 0);
+        renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // Create cube with game dev colors
-        const geometry = new THREE.BoxGeometry(2, 2, 2);
-        const materials = [
-          new THREE.MeshPhongMaterial({ color: 0x00ffcc, emissive: 0x00aa99 }), // Cyan
-          new THREE.MeshPhongMaterial({ color: 0xff6b00, emissive: 0xcc5500 }), // Orange
-          new THREE.MeshPhongMaterial({ color: 0x00ffcc, emissive: 0x00aa99 }), // Cyan
-          new THREE.MeshPhongMaterial({ color: 0xff6b00, emissive: 0xcc5500 }), // Orange
-          new THREE.MeshPhongMaterial({ color: 0xff0080, emissive: 0xcc0066 }), // Pink
-          new THREE.MeshPhongMaterial({ color: 0x00ffcc, emissive: 0x00aa99 }), // Cyan
-        ];
-        const cube = new THREE.Mesh(geometry, materials);
-        scene.add(cube);
+        // Create multiple cubes for dynamic effect
+        const cubes = [];
+        const colors = [0x00ffcc, 0xff6b00, 0xff0080];
+        
+        for (let i = 0; i < 3; i++) {
+          const geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+          const material = new THREE.MeshPhongMaterial({ 
+            color: colors[i], 
+            emissive: colors[i],
+            emissiveIntensity: 0.3,
+            wireframe: false
+          });
+          const cube = new THREE.Mesh(geometry, material);
+          cube.position.set((i - 1) * 3, Math.sin(i) * 2, -5 - i * 2);
+          scene.add(cube);
+          cubes.push(cube);
+        }
 
         // Lighting
-        const light = new THREE.DirectionalLight(0xffffff, 1);
+        const light = new THREE.DirectionalLight(0xffffff, 1.5);
         light.position.set(5, 5, 5);
         scene.add(light);
 
         const ambientLight = new THREE.AmbientLight(0x404040, 2);
         scene.add(ambientLight);
 
-        camera.position.z = 3;
+        camera.position.z = 5;
 
         let mouse = { x: 0, y: 0 };
         document.addEventListener('mousemove', (e) => {
@@ -221,9 +226,12 @@
         function animate() {
           requestAnimationFrame(animate);
           
-          cube.rotation.x += 0.005;
-          cube.rotation.y += 0.007;
-          cube.rotation.z += mouse.x * 0.001;
+          cubes.forEach((cube, i) => {
+            cube.rotation.x += 0.003 + i * 0.001;
+            cube.rotation.y += 0.005 + i * 0.002;
+            cube.rotation.z += mouse.x * 0.0005;
+            cube.position.x += Math.sin(i) * 0.01;
+          });
           
           renderer.render(scene, camera);
         }
@@ -232,9 +240,11 @@
 
         // Handle window resize
         window.addEventListener('resize', () => {
-          camera.aspect = container.clientWidth / container.clientHeight;
+          const newWidth = window.innerWidth;
+          const newHeight = container.clientHeight;
+          camera.aspect = newWidth / newHeight;
           camera.updateProjectionMatrix();
-          renderer.setSize(container.clientWidth, container.clientHeight);
+          renderer.setSize(newWidth, newHeight);
         });
       }
 
