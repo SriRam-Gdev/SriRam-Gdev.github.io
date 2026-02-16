@@ -36,6 +36,37 @@
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/bd3d602acc.js"></script>
+
+  <style>
+    @keyframes jiggle {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      25% { transform: rotate(-2deg) translateY(-3px); }
+      50% { transform: rotate(2deg) translateY(-6px); }
+      75% { transform: rotate(-2deg) translateY(-3px); }
+    }
+    
+    .letter.jiggle {
+      animation: jiggle 0.4s ease-in-out;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const letters = document.querySelectorAll('#home .letter');
+      
+      letters.forEach(letter => {
+        letter.addEventListener('mouseenter', function() {
+          this.classList.add('jiggle');
+          setTimeout(() => this.classList.remove('jiggle'), 400);
+        });
+        
+        letter.addEventListener('touchstart', function() {
+          this.classList.add('jiggle');
+          setTimeout(() => this.classList.remove('jiggle'), 400);
+        });
+      });
+    });
+  </script>
 </head>
 
 
@@ -89,13 +120,7 @@
               <br>
               <span class="letter">I</span><span class="blue-sign letter">'</span><span class="letter">m</span>
               <span class="highlighted-name">
-                <span class="letter">S</span>
-                <span class="letter">r</span>
-                <span class="letter">i</span>
-                <span class="letter">r</span>
-                <span class="letter">a</span>
-                <span class="letter">m</span>
-                <span class="orange-sign letter">,</span>
+                <span class="letter">S</span><span class="letter">r</span><span class="letter">i</span><span class="letter">r</span><span class="letter">a</span><span class="letter">m</span><span class="orange-sign letter">,</span>
               </span>
               <br>
               <span class="letter">G</span><span class="letter">a</span><span class="letter">m</span><span
@@ -188,32 +213,28 @@
         </div>
       </div>
       <div class="row lower-row">
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center">
-          <div class="circle circle1">
-            <canvas width="140" height="140" id="canvas1"></canvas>
-            <h2>50</h2>
-            <span>Maya</span>
+        <div class="col-lg-3 col-md-6 col-sm-6 text-center mb-4">
+          <div style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(0,255,204,0.05) 100%); border: 1px solid rgba(0,255,204,0.3); padding: 25px; border-radius: 15px; transition: all 0.3s;">
+            <i class="fas fa-cube" style="font-size: 2.5rem; color: #00ffcc; margin-bottom: 15px;"></i>
+            <h4 style="color: #fff; margin: 0;">Maya</h4>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center">
-          <div class="circle circle2">
-            <canvas width="140" height="140" id="canvas2"></canvas>
-            <h2>70</h2>
-            <span>C#</span>
+        <div class="col-lg-3 col-md-6 col-sm-6 text-center mb-4">
+          <div style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(0,255,204,0.05) 100%); border: 1px solid rgba(0,255,204,0.3); padding: 25px; border-radius: 15px; transition: all 0.3s;">
+            <i class="fab fa-cuttlefish" style="font-size: 2.5rem; color: #00ffcc; margin-bottom: 15px;"></i>
+            <h4 style="color: #fff; margin: 0;">C#</h4>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center">
-          <div class="circle circle3">
-            <canvas width="140" height="140" id="canvas3"></canvas>
-            <h2>50</h2>
-            <span>Blender</span>
+        <div class="col-lg-3 col-md-6 col-sm-6 text-center mb-4">
+          <div style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(0,255,204,0.05) 100%); border: 1px solid rgba(0,255,204,0.3); padding: 25px; border-radius: 15px; transition: all 0.3s;">
+            <i class="fas fa-cubes" style="font-size: 2.5rem; color: #00ffcc; margin-bottom: 15px;"></i>
+            <h4 style="color: #fff; margin: 0;">Blender</h4>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6 text-center">
-          <div class="circle circle4">
-            <canvas width="140" height="140" id="canvas4"></canvas>
-            <h2>70</h2>
-            <span>Unity</span>
+        <div class="col-lg-3 col-md-6 col-sm-6 text-center mb-4">
+          <div style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(0,255,204,0.05) 100%); border: 1px solid rgba(0,255,204,0.3); padding: 25px; border-radius: 15px; transition: all 0.3s;">
+            <i class="fab fa-unity" style="font-size: 2.5rem; color: #00ffcc; margin-bottom: 15px;"></i>
+            <h4 style="color: #fff; margin: 0;">Unity</h4>
           </div>
         </div>
       </div>
@@ -250,22 +271,7 @@
       <div class="row lower-row">
         <div class="owl-carousel owl-theme">
           
-          <div class="item" title="Go To Webpage">
-            <div class="outer-cardholder">
-              <a href="" target="_blank">
-                <div class="cardholder">
-                  <div class="image">
-                    <img src="https://i.ytimg.com/vi/Db_PUwXF0SA/maxresdefault.jpg" alt="">
-                  </div>
-                  <div class="text">
-                    <h2>AR Navigation</h2>
-                    <p class="description">Working on AR Navigaton project</p>
-                    <p class="tags">#Unity5</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
+
           <div class="item" title="Go To Webpage">
             <div class="outer-cardholder">
               <a href="" target="_blank">
@@ -330,22 +336,7 @@
               </a>
             </div>
           </div>
-        
-          <div class="item">
-            <div class="outer-cardholder">
-              <a href="#" onclick="return false;">
-                <div class="cardholder">
-                <div class="image">
-                  <img src="https://i.ytimg.com/vi/vFvwyu_ZKfU/maxresdefault.jpg"alt="">
-                </div>
-                <div class="text">
-                  <h2>Terrain Generation</h2>
-                  <p class="description">Working on different terrain creation in unity</p>
-                </div>
-                <p class="tags">#Unity5</p>
-            </div>
-            </a>
-          </div>
+
         </div>
       </div>
     </div>
@@ -365,7 +356,7 @@
         </div>
       </div>
       <div class="row lower-row mt-4 justify-content-center">
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="cert-card">
             <div class="cert-media">
               <img src="img/C%23%20Certification.jpeg" alt="Foundational C# with Microsoft certificate">
@@ -374,7 +365,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="cert-card">
             <div class="cert-media">
                 <img src="img/AWS%20Certificate.png" alt="AWS Academy Graduate - AWS Academy Cloud Foundations certificate">
@@ -383,7 +374,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="cert-card">
             <div class="cert-media">
               <img src="img/Intership.png" alt="Game dev internship certificate">
@@ -392,7 +383,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="cert-card">
             <div class="cert-media">
               <img src="img/unity-junior-programmer.png" alt="Unity Junior Programmer badge">
@@ -401,7 +392,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="cert-card">
             <div class="cert-media">
               <img src="img/unity-essentials-pathway.png" alt="Unity Essentials badge">
@@ -415,53 +406,28 @@
 
   <!-- my games -->
 
-  <section id="games" style="background: #181818; padding: 40px 0;">
-      <!-- Keep the improved My Games section as requested -->
+  <section id="games" style="background: #181818; padding: 60px 0;">
     <div class="container">
-      <div class="row upper-row">
-        <div class="col-lg-12 align-self-center text-center">
-          <div class="header sal">
-            <h2 style="color: #fff;">MY GAMES</h2>
-          </div>
+      <div class="row mb-5">
+        <div class="col-lg-12 text-center">
+          <h2 style="color: #fff; font-size: 2.5rem; font-weight: bold;">MY GAMES</h2>
         </div>
       </div>
-      <div class="row middle-row mt-5">
-        <div class="col-lg-10 mx-auto">
-          <div class="game-card" style="background-color: #232946; padding: 18px; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); max-width: 600px; margin: 0 auto;">
-            <div class="game-image" style="text-align: center;">
-              <div class="video-container" style="position: relative; display: inline-block; width: 100%; max-width: 800px;">
-                <video 
-                  id="boomBashVideo"
-                  width="100%" 
-                  style="border-radius: 12px; box-shadow: 0 4px 16px #00ffcc; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;"
-                  poster="img/BoomBashPoster.png"
-                >
-                  <source src="img/Boom Bash Gameplay.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <script>
-                const video = document.getElementById('boomBashVideo');
-                const videoContainer = document.querySelector('.video-container');
-                videoContainer.addEventListener('mouseenter', () => {
-                  video.play();
-                  video.style.transform = 'scale(1.03)';
-                  video.style.boxShadow = '0 8px 24px #00ffcc';
-                });
-                videoContainer.addEventListener('mouseleave', () => {
-                  video.pause();
-                  video.style.transform = 'scale(1)';
-                  video.style.boxShadow = '0 4px 16px #00ffcc';
-                });
-              </script>
-              <div class="game-info mt-4">
-                <h3 style="color: #00ffcc; font-size: 2rem; font-weight: bold;">Boom Bash</h3>
-                <p class="game-description" style="color: #fff; font-size: 1.1rem;">Fast-paced object blaster.</p>
-                <a href="https://play.unity.com/en/games/ffb07507-6223-436c-a8e6-9b46d73602b1/boom-bash" target="_blank" class="btn btn-success btn-lg mt-3" style="font-size: 1.1rem; border-radius: 30px; box-shadow: 0 0 10px #28a745;">
-                  <i class="fas fa-gamepad"></i> Play Game
-                </a>
-              </div>
-            </div>
+      <div class="row">
+        <div class="col-md-6 mb-4 d-flex justify-content-center">
+          <div style="background: linear-gradient(135deg, #00ffcc 0%, #00cc99 100%); padding: 40px; border-radius: 12px; text-align: center; width: 100%; max-width: 350px; box-shadow: 0 8px 24px rgba(0,255,204,0.2);">
+            <h3 style="color: #000; font-size: 2rem; font-weight: bold; margin: 0 0 20px 0;">Boom Bash</h3>
+            <a href="https://play.unity.com/en/games/ffb07507-6223-436c-a8e6-9b46d73602b1/boom-bash" target="_blank" class="btn" style="background: #000; color: #00ffcc; padding: 12px 30px; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block;">
+              Play Now
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4 d-flex justify-content-center">
+          <div style="background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%); padding: 40px; border-radius: 12px; text-align: center; width: 100%; max-width: 350px; box-shadow: 0 8px 24px rgba(255,107,0,0.2);">
+            <h3 style="color: #fff; font-size: 2rem; font-weight: bold; margin: 0 0 20px 0;">Haunted House</h3>
+            <a href="https://play.unity.com/en/games/b6d25861-ac27-4898-bcc9-b0adce82c716/spooky-house" target="_blank" class="btn" style="background: #fff; color: #ff6b00; padding: 12px 30px; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block;">
+              Play Now
+            </a>
           </div>
         </div>
       </div>
@@ -470,50 +436,88 @@
 
   <!-- contact -->
 
-  <section id="contact">
-    <div class="container">
-      <div class="row"> 
-        <div class="col-lg-12">
-          <div class="text">
-            <h1>CONTACT ME</h1>
-          </div>
+  <section id="contact" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.05); border-radius: 50%; z-index: 0;"></div>
+    <div style="position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: rgba(255,107,0,0.03); border-radius: 50%; z-index: 0;"></div>
+    
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="row mb-5">
+        <div class="col-lg-12 text-center">
+          <h5 style="color: #00ffcc; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 0.9rem;">Let's Create Something Amazing</h5>
+          <h1 style="color: #fff; font-size: 3rem; font-weight: bold; margin-top: 10px;">Ready to Collaborate?</h1>
+          <p style="color: #aaa; font-size: 1.1rem; max-width: 600px; margin: 20px auto 0;">Reach out and let's discuss your game development project or opportunity!</p>
         </div>
       </div>
-      <form method="POST" action="https://formspree.io/f/xvoeynpw" class="send-message">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <div class="row justify-content-center">
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <label>First Name</label>
-                  <input id="name" name="first_name" type="text" class="form-control" placeholder="First name" required>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(0,255,204,0.05) 100%); border: 1px solid rgba(0,255,204,0.3); padding: 50px; border-radius: 20px; backdrop-filter: blur(10px);">
+            <form method="POST" action="https://formspree.io/f/xvoeynpw" class="send-message">
+              <div class="row">
+                <div class="col-lg-6 mb-4">
+                  <div style="position: relative;">
+                    <i class="fas fa-user" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #00ffcc;"></i>
+                    <input id="name" name="first_name" type="text" style="width: 100%; padding: 12px 15px 12px 40px; background: rgba(0,0,0,0.3); border: 1px solid rgba(0,255,204,0.3); border-radius: 8px; color: #fff; font-size: 1rem;" placeholder="First Name" required>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div style="position: relative;">
+                    <i class="fas fa-user" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #00ffcc;"></i>
+                    <input id="surname" name="last_name" type="text" style="width: 100%; padding: 12px 15px 12px 40px; background: rgba(0,0,0,0.3); border: 1px solid rgba(0,255,204,0.3); border-radius: 8px; color: #fff; font-size: 1rem;" placeholder="Last Name" required>
+                  </div>
+                </div>
+                <div class="col-lg-12 mb-4">
+                  <div style="position: relative;">
+                    <i class="fas fa-envelope" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #00ffcc;"></i>
+                    <input id="email" name="email" type="email" style="width: 100%; padding: 12px 15px 12px 40px; background: rgba(0,0,0,0.3); border: 1px solid rgba(0,255,204,0.3); border-radius: 8px; color: #fff; font-size: 1rem;" placeholder="Your Email" required>
+                  </div>
+                </div>
+                <div class="col-lg-12 mb-4">
+                  <div style="position: relative;">
+                    <i class="fas fa-message" style="position: absolute; left: 15px; top: 15px; color: #00ffcc;"></i>
+                    <textarea id="message" name="message" style="width: 100%; padding: 12px 15px 12px 40px; background: rgba(0,0,0,0.3); border: 1px solid rgba(0,255,204,0.3); border-radius: 8px; color: #fff; font-size: 1rem; min-height: 150px; font-family: inherit;" placeholder="Your Message" required></textarea>
+                  </div>
+                </div>
+                <div class="col-lg-12 text-center">
+                  <button type="submit" style="background: linear-gradient(135deg, #00ffcc 0%, #00cc99 100%); color: #000; padding: 14px 50px; border: none; border-radius: 10px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 24px rgba(0,255,204,0.3); text-transform: uppercase; letter-spacing: 1px;">
+                    <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Send Message
+                  </button>
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <label>Last Name</label>
-                  <input id="surname" name="last_name" type="text" class="form-control" placeholder="Last name" required>
+            </form>
+          </div>
+
+          <div class="row mt-5 justify-content-center">
+            <div class="col-md-4 text-center mb-4">
+              <a href="mailto:ssriram735@gmail.com" style="text-decoration: none; display: block;">
+                <div style="background: linear-gradient(135deg, rgba(255,107,0,0.1) 0%, rgba(255,107,0,0.05) 100%); border: 1px solid rgba(255,107,0,0.3); padding: 20px; border-radius: 12px; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='#ff6b00'; this.style.boxShadow='0 8px 24px rgba(255,107,0,0.2)'" onmouseout="this.style.borderColor='rgba(255,107,0,0.3)'; this.style.boxShadow='none'">
+                  <i class="fas fa-envelope" style="font-size: 2rem; color: #ff6b00; margin-bottom: 10px;"></i>
+                  <h5 style="color: #fff; margin: 10px 0 5px 0;">Email</h5>
+                  <p style="color: #aaa; font-size: 0.9rem; margin: 0;">ssriram735@gmail.com</p>
                 </div>
-              </div>
-              <div class="col-lg-12 mt-3">
-                <div class="form-group">
-                  <label>Email</label>
-                  <input id="email" name="email" type="email" class="form-control" placeholder="Your Email" required>
+              </a>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+              <a href="https://www.linkedin.com/in/sriram-s-b6bb6529b/" target="_blank" style="text-decoration: none;">
+                <div style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(0,255,204,0.05) 100%); border: 1px solid rgba(0,255,204,0.3); padding: 20px; border-radius: 12px; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='#00ffcc'; this.style.boxShadow='0 8px 24px rgba(0,255,204,0.2)'" onmouseout="this.style.borderColor='rgba(0,255,204,0.3)'; this.style.boxShadow='none'">
+                  <i class="fab fa-linkedin" style="font-size: 2rem; color: #00ffcc; margin-bottom: 10px;"></i>
+                  <h5 style="color: #fff; margin: 10px 0 5px 0;">LinkedIn</h5>
+                  <p style="color: #aaa; font-size: 0.9rem; margin: 0;">Professional network</p>
                 </div>
-              </div>
-              <div class="col-lg-12 mt-3">
-                <div class="form-group">
-                  <label>Your Message</label>
-                  <textarea id="message" name="message" class="form-control" required></textarea>
+              </a>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+              <a href="https://github.com/srirammax/srirammax.github.io" target="_blank" style="text-decoration: none;">
+                <div style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(0,255,204,0.05) 100%); border: 1px solid rgba(0,255,204,0.3); padding: 20px; border-radius: 12px; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='#00ffcc'; this.style.boxShadow='0 8px 24px rgba(0,255,204,0.2)'" onmouseout="this.style.borderColor='rgba(0,255,204,0.3)'; this.style.boxShadow='none'">
+                  <i class="fab fa-github" style="font-size: 2rem; color: #00ffcc; margin-bottom: 10px;"></i>
+                  <h5 style="color: #fff; margin: 10px 0 5px 0;">GitHub</h5>
+                  <p style="color: #aaa; font-size: 0.9rem; margin: 0;">View my work</p>
                 </div>
-              </div>
-              <button id="send_message" type="submit" class="btn btn-primary btn-lg mt-1">Send</button>
+              </a>
             </div>
           </div>
         </div>
-      </form>
-      
-      
+      </div>
     </div>
   </section>
 
