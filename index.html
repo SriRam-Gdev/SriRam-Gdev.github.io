@@ -48,6 +48,11 @@
     .letter.jiggle {
       animation: jiggle 0.4s ease-in-out;
     }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
   </style>
 
   <script>
@@ -92,7 +97,7 @@
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#portfolio">Portfolio</a>
+              <a class="nav-link" href="#projects">Portfolio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#contact">Contact</a>
@@ -129,6 +134,8 @@
                 class="letter">o</span><span class="letter">p</span><span class="letter">e</span><span
                 class="letter">r</span><span class="red-sign letter">.</span>
             </h1>
+            <p style="color: #00ffcc; font-size: 1.3rem; margin-top: 20px; letter-spacing: 2px; font-weight: bold; animation: blink 1.5s infinite;">▶ PLAY MODE ACTIVATED</p>
+            <p style="color: #aaa; font-size: 1rem; margin-top: 10px;">Building immersive gaming experiences with Unity & Blender</p>
           </div>
         </div>
       </div>
@@ -145,10 +152,27 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-6">
-          <div class="image">
-            <img src="./favicon/animated-characters.gif" alt="Burada reklaminiz ola bilerdi">
-          </div>
+        <div class="col-lg-6" style="display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+          <svg width="250" height="300" viewBox="0 0 250 300" style="filter: drop-shadow(0 0 20px rgba(0,255,204,0.8)); animation: float 3s ease-in-out infinite;">
+            <!-- Head -->
+            <rect x="80" y="30" width="90" height="90" fill="#ff6b00" stroke="#ff8c00" stroke-width="2"/>
+            <rect x="95" y="50" width="18" height="18" fill="#fff"/>
+            <rect x="137" y="50" width="18" height="18" fill="#fff"/>
+            <rect x="107" y="60" width="6" height="6" fill="#000"/>
+            <rect x="147" y="60" width="6" height="6" fill="#000"/>
+            <rect x="105" y="75" width="40" height="6" fill="#000"/>
+            
+            <!-- Body -->
+            <rect x="75" y="120" width="100" height="70" fill="#00ffcc" stroke="#00e6b3" stroke-width="2"/>
+            
+            <!-- Arms -->
+            <rect x="25" y="130" width="50" height="50" fill="#ff6b00" stroke="#ff8c00" stroke-width="2"/>
+            <rect x="175" y="130" width="50" height="50" fill="#ff6b00" stroke="#ff8c00" stroke-width="2"/>
+            
+            <!-- Legs -->
+            <rect x="95" y="190" width="30" height="80" fill="#ff0080" stroke="#ff1493" stroke-width="2"/>
+            <rect x="125" y="190" width="30" height="80" fill="#ff0080" stroke="#ff1493" stroke-width="2"/>
+          </svg>
         </div>
         <div class="col-lg-6">
           <div class="text">
@@ -241,105 +265,118 @@
     </div>
   </section>
 
-  <!-- projects -->
-
-  <section id="projects">
-    <div class="container">
-      <div class="row upper-row">
-        <div class="col-lg-5 align-self-center">
-          <div class="header">
-            <h5>WORKING PROCESS</h5>
-            <h2>MY PROJECTS</h2>
-          </div>
-        </div>
-        <div class="col-lg-5 align-self-center">
-          <div class="info-content">
-            <p>"Expect the best, plan for the worst, and prepare to be surprised."</p>
-          </div>
-        </div>
-        <div class="col-lg-2 align-self-center">
-          <div class="owl-nav">
-            <div class="owl-prev">
-              <i class="fas fa-arrow-left"></i>
-            </div>
-            <div class="owl-next">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
+  <!-- Game Dev Stats -->
+  <section style="background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%); padding: 80px 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 50%, rgba(0,255,204,0.1) 0%, transparent 50%);"></div>
+    <div style="position: absolute; bottom: 0; right: 0; width: 100%; height: 100%; background: radial-gradient(circle at 80% 50%, rgba(255,107,0,0.1) 0%, transparent 50%);"></div>
+    
+    <div class="container" style="position: relative; z-index: 1;">
+      <div style="text-align: center; margin-bottom: 60px;">
+        <h2 style="color: #fff; font-size: 2.8rem; font-weight: bold; margin-bottom: 10px;">⚡ GAME DEV STATS ⚡</h2>
+        <p style="color: #00ffcc; font-size: 1.1rem; letter-spacing: 2px;">ACHIEVEMENT UNLOCKED</p>
       </div>
-      <div class="row lower-row">
-        <div class="owl-carousel owl-theme">
-          
 
-          <div class="item" title="Go To Webpage">
-            <div class="outer-cardholder">
-              <a href="" target="_blank">
-                <div class="cardholder">
-                  <div class="image">
-                    <img src="img\Screenshot 2024-05-30 204551.png" alt="">
-                  </div>
-                  <div class="text">
-                    <h2>Pixel Platform creation</h2>
-                    <p class="description">Building many Platform in unity 5</p>
-                    <p class="tags">#Unity5</p>
-                  </div>
-                </div>
-              </a>
-            </div>
+      <div class="row">
+        <div class="col-md-3 text-center mb-4">
+          <div style="background: linear-gradient(135deg, rgba(0,255,204,0.15) 0%, rgba(0,255,204,0.05) 100%); border: 2px solid rgba(0,255,204,0.4); padding: 40px 20px; border-radius: 15px; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px rgba(0,255,204,0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+            <div style="font-size: 3rem; font-weight: bold; background: linear-gradient(135deg, #00ffcc 0%, #00cc99 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">2</div>
+            <p style="color: #00ffcc; font-weight: bold; margin-top: 10px; font-size: 1.1rem;">GAMES SHIPPED</p>
+            <p style="color: #aaa; font-size: 0.9rem;">Live on Unity Play</p>
           </div>
-          <div class="item" title="Go To Webpage">
-            <div class="outer-cardholder">
-              <a href="" target="_blank">
-                <div class="cardholder">
-                  <div class="image">
-                    <img src="img\Screenshot (1).png" alt="">
-                  </div>
-                  <div class="text">
-                    <h2>Modelling</h2>
-                    <p class="description">Creating 3DModels In Blender</p>
-                    <p class="tags">#Blender</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="item" title="Go To Webpage">
-            <div class="outer-cardholder">
-              <a href="#" onclick="return false;">
-                <div class="cardholder">
-                  <div class="image">
-                    <video src="img/MOBA%20Prototype.mp4" muted autoplay loop playsinline preload="metadata"></video>
-                  </div>
-                  <div class="text">
-                    <h2>MOBA Prototype</h2>
-                    <p class="description">Prototype of a MOBA game similar to League of Legends and Mobile Legends</p>
-                    <p class="tags">#Unity</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="item" title="Go To Webpage">
-            <div class="outer-cardholder">
-              <a href="" target="_blank">
-                <div class="cardholder">
-                  <div class="image">
-                    <img src="img\Screenshot 2024-06-05 202127.png" alt="">
-                  </div>
-                  <div class="text">
-                    <h2>Flappy Bird</h2>
-                    <p class="description">Made a flappy bird game</p>
-                    <p class="tags">#Unity5</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
+        </div>
 
+        <div class="col-md-3 text-center mb-4">
+          <div style="background: linear-gradient(135deg, rgba(255,107,0,0.15) 0%, rgba(255,107,0,0.05) 100%); border: 2px solid rgba(255,107,0,0.4); padding: 40px 20px; border-radius: 15px; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px rgba(255,107,0,0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+            <div style="font-size: 3rem; font-weight: bold; background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">4+</div>
+            <p style="color: #ff6b00; font-weight: bold; margin-top: 10px; font-size: 1.1rem;">PROJECTS COMPLETE</p>
+            <p style="color: #aaa; font-size: 0.9rem;">Gameplay, 3D, MOBA</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 text-center mb-4">
+          <div style="background: linear-gradient(135deg, rgba(0,255,204,0.15) 0%, rgba(0,255,204,0.05) 100%); border: 2px solid rgba(0,255,204,0.4); padding: 40px 20px; border-radius: 15px; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px rgba(0,255,204,0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+            <div style="font-size: 3rem; font-weight: bold; background: linear-gradient(135deg, #00ffcc 0%, #00cc99 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">5</div>
+            <p style="color: #00ffcc; font-weight: bold; margin-top: 10px; font-size: 1.1rem;">CERTIFICATIONS</p>
+            <p style="color: #aaa; font-size: 0.9rem;">Microsoft, AWS, Unity</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 text-center mb-4">
+          <div style="background: linear-gradient(135deg, rgba(255,107,0,0.15) 0%, rgba(255,107,0,0.05) 100%); border: 2px solid rgba(255,107,0,0.4); padding: 40px 20px; border-radius: 15px; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px rgba(255,107,0,0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+            <div style="font-size: 3rem; font-weight: bold; background: linear-gradient(135deg, #ff6b00 0%, #ff8c00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">2+</div>
+            <p style="color: #ff6b00; font-weight: bold; margin-top: 10px; font-size: 1.1rem;">YEARS EXPERIENCE</p>
+            <p style="color: #aaa; font-size: 0.9rem;">Unity Game Dev</p>
+          </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- projects -->
+
+  <section id="projects" style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 80px 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(0,255,204,0.03); border-radius: 50%;"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="row mb-5">
+        <div class="col-lg-12 text-center">
+          <h5 style="color: #00ffcc; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-size: 0.9rem;">My Work</h5>
+          <h2 style="color: #fff; font-size: 3rem; font-weight: bold; margin-top: 10px;">MY PROJECTS</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-3">
+          <div style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(0,255,204,0.05) 100%); border: 1px solid rgba(0,255,204,0.3); padding: 0; border-radius: 12px; overflow: hidden; transition: all 0.3s; height: 100%;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(0,255,204,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="position: relative; width: 100%; padding-bottom: 45%; overflow: hidden;">
+              <img src="img\Screenshot 2024-05-30 204551.png" alt="Pixel Platform" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="padding: 15px;">
+              <h4 style="color: #00ffcc; font-size: 1.2rem; font-weight: bold; margin: 0 0 6px 0;">Pixel Platform</h4>
+              <p style="color: #aaa; font-size: 0.85rem; margin: 0 0 10px 0; line-height: 1.4;">Building many platform games in Unity 5</p>
+              <span style="background: rgba(0,255,204,0.2); color: #00ffcc; padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">#Unity5</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+          <div style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(0,255,204,0.05) 100%); border: 1px solid rgba(0,255,204,0.3); padding: 0; border-radius: 12px; overflow: hidden; transition: all 0.3s; height: 100%;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(0,255,204,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="position: relative; width: 100%; padding-bottom: 45%; overflow: hidden;">
+              <img src="img\Screenshot (1).png" alt="Modelling" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="padding: 15px;">
+              <h4 style="color: #00ffcc; font-size: 1.2rem; font-weight: bold; margin: 0 0 6px 0;">Modelling</h4>
+              <p style="color: #aaa; font-size: 0.85rem; margin: 0 0 10px 0; line-height: 1.4;">Creating 3D models in Blender</p>
+              <span style="background: rgba(0,255,204,0.2); color: #00ffcc; padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">#Blender</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+          <div style="background: linear-gradient(135deg, rgba(255,107,0,0.1) 0%, rgba(255,107,0,0.05) 100%); border: 1px solid rgba(255,107,0,0.3); padding: 0; border-radius: 12px; overflow: hidden; transition: all 0.3s; height: 100%;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(255,107,0,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="position: relative; width: 100%; padding-bottom: 45%; overflow: hidden; background: #000;">
+              <video src="img/MOBA%20Prototype.mp4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" muted autoplay loop></video>
+            </div>
+            <div style="padding: 15px;">
+              <h4 style="color: #ff6b00; font-size: 1.2rem; font-weight: bold; margin: 0 0 6px 0;">MOBA Prototype</h4>
+              <p style="color: #aaa; font-size: 0.85rem; margin: 0 0 10px 0; line-height: 1.4;">Prototype of a MOBA game similar to League of Legends</p>
+              <span style="background: rgba(255,107,0,0.2); color: #ff6b00; padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">#Unity</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+          <div style="background: linear-gradient(135deg, rgba(255,107,0,0.1) 0%, rgba(255,107,0,0.05) 100%); border: 1px solid rgba(255,107,0,0.3); padding: 0; border-radius: 12px; overflow: hidden; transition: all 0.3s; height: 100%;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(255,107,0,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="position: relative; width: 100%; padding-bottom: 45%; overflow: hidden;">
+              <img src="img\Screenshot 2024-06-05 202127.png" alt="Flappy Bird" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="padding: 15px;">
+              <h4 style="color: #ff6b00; font-size: 1.2rem; font-weight: bold; margin: 0 0 6px 0;">Flappy Bird</h4>
+              <p style="color: #aaa; font-size: 0.85rem; margin: 0 0 10px 0; line-height: 1.4;">A flappy bird style game built with Unity</p>
+              <span style="background: rgba(255,107,0,0.2); color: #ff6b00; padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">#Unity5</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -361,7 +398,6 @@
             <div class="cert-media">
               <img src="img/C%23%20Certification.jpeg" alt="Foundational C# with Microsoft certificate">
             </div>
-            <h4>Foundational C# with Microsoft</h4>
           </div>
         </div>
 
@@ -370,7 +406,6 @@
             <div class="cert-media">
                 <img src="img/AWS%20Certificate.png" alt="AWS Academy Graduate - AWS Academy Cloud Foundations certificate">
             </div>
-            <h4>AWS Academy Graduate - AWS Academy Cloud Foundations</h4>
           </div>
         </div>
 
@@ -379,7 +414,6 @@
             <div class="cert-media">
               <img src="img/Intership.png" alt="Game dev internship certificate">
             </div>
-            <h4>Game Dev Internship Certification</h4>
           </div>
         </div>
 
@@ -388,7 +422,6 @@
             <div class="cert-media">
               <img src="img/unity-junior-programmer.png" alt="Unity Junior Programmer badge">
             </div>
-            <h4>Unity Junior Programmer</h4>
           </div>
         </div>
 
@@ -397,7 +430,6 @@
             <div class="cert-media">
               <img src="img/unity-essentials-pathway.png" alt="Unity Essentials badge">
             </div>
-            <h4>Unity Essentials</h4>
           </div>
         </div>
       </div>
